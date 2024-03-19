@@ -67,7 +67,7 @@ class Servico(models.Model):
 class OrdemServico(models.Model):
     oficina = models.ForeignKey(Oficina, verbose_name='Oficina', on_delete=models.CASCADE)
     mecanico = models.ForeignKey(Mecanico, verbose_name='Mecânico', on_delete=models.SET_NULL, null=True)
-    cliente = models.CharField(verbose_name='Cliente', max_lenght=100)
+    cliente = models.CharField(verbose_name='Cliente', max_length=100)
     veiculo = models.CharField(verbose_name='Veículo', max_length=100, help_text='Ex: Moto Fan 160')
     placa = models.CharField(verbose_name='Placa', max_length=8, help_text='Ex: AAA-0000')
     previsao = models.DateField(verbose_name='Previsão', default=datetime.datetime.now)
