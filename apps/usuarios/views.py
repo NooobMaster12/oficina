@@ -18,7 +18,7 @@ def login_usuario(request):
                 return HttpResponse('<h1>Você fez login</h1>')
             else:
                 return HttpResponse('<h1>Erro no login</h1>')
-        form = LoginForm()
-        context['form'] = form
-        
+    
+    form = LoginForm()
+    context['form'] = form  
     return render(request, template_name, context)

@@ -44,7 +44,10 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-UTIL_APPS = []
+UTIL_APPS = [
+    
+    'widget_tweaks',
+]
 
 OFICINA_APPS = [
     'usuarios.apps.UsuariosConfig',
