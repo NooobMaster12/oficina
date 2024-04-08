@@ -152,3 +152,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# from django.contrib import messages
+
+# MESSAGES_TAGS = {
+#     messages.DEBUG: 'messages-debug',
+#     messages.ERROR: 'messages-error',
+#     messages.INFO: 'messages-info',
+#     messages.SUCCESS: 'message-success',
+#     messages.WARNING: 'messages-warning',
+# }

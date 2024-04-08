@@ -6,7 +6,7 @@ from .forms import OficinaForm
 from .models import Oficina
 # Create your views here.
 
-
+# @login_required
 def home(request):
     template_name = 'geral/home.html'
     context = {}

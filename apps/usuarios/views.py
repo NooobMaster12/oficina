@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from django.http import HttpResponse
+from django.contrib import messages
 # Create your views here.
 
 def login_usuario(request):
@@ -15,9 +16,14 @@ def login_usuario(request):
             user = authenticate(username=usuario, password=senha)
             if user is not None and user.is_active:
                 login(request, user)
-                return HttpResponse('<h1>Você fez login</h1>')
+                messages.info(request, 'Você fez login com sucesso.')
+                return redirect('geral:home')
             else:
-                return HttpResponse('<h1>Erro no login</h1>')
+                messages.error(request, 'Usuário ou senha incorreto.')
+                return redirect('usuarios:login')
+        else:
+            messages.error(request, 'Formulário inválido')
+            return redirect('usuarios:login')
     
     form = LoginForm()
     context['form'] = form  
