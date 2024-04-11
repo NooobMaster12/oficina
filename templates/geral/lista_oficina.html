@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Oficinas | {{ block.super }}
+{% endblock titulo %}
+
+{% block main %}
+
+    {% include 'utils/messages.html' %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Telefone</th>
+            <th scope="col" colspan="2">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for oficina in oficinas %}
+        <tr>
+            <th scope="row">{{ oficina.id }}</th>
+            <td>{{ oficina.nome }}</td>
+            <td>{{ oficina.cnpj }}</td>
+            <td>{{ oficina.telefone }}</td>
+            <td>
+                <a href="" class="btn btn-outline-info btn-sm"><i class="fa-solid fa-rotate-right"></i></a>
+                <a href="" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href='{% url "geral:nova_oficina" %}' class="btn btn-primary">Nova</a>
+
+{% endblock main %}
