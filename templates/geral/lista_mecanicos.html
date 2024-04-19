@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Oficinas | {{ block.super }}
+Mecânicos | {{ block.super }}
 {% endblock titulo %}
 
 {% block main %}
@@ -11,23 +11,20 @@ Oficinas | {{ block.super }}
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Oficina</th>
             <th scope="col">Nome</th>
-            <th scope="col">CNPJ</th>
-            <th scope="col">Telefone</th>
+            <th scope="col">Código</th>            
             <th scope="col" colspan='2'>Ações</th>
         </tr>
     </thead>
     <tbody>
-        {% for oficina in oficinas %}
+        {% for mecanico in mecanicos %}
         <tr>
-            <th scope="row">{{ oficina.id }}</th>
-            <td>{{ oficina.nome }}</td>
-            <td>{{ oficina.cnpj }}</td>
-            <td>{{ oficina.telefone }}</td>
+            <th scope="row">{{ mecanico.nome }}</th>
+            <td>{{ mecanico.oficina }}</td>
+            <td>{{ mecanico.codigo }}</td>            
             <td>
-                <a class="btn btn-outline-info" href="{% url 'geral:editar_oficina' oficina.id %}"><i class="fa-solid fa-arrow-rotate-right"></i></a>
-                <!-- <a class="btn btn-outline-danger btn-sm" href="{% url 'geral:apagar_oficina' pk=oficina.id %}"><i class="fa-regular fa-trash-can"></i></a> -->
+                <a class="btn btn-outline-info" href="{% url 'geral:editar_mecanico' mecanico.id %}"><i class="fa-solid fa-arrow-rotate-right"></i></a>
                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-trash-can"></i></button>
            
             </td>      
@@ -42,12 +39,12 @@ Oficinas | {{ block.super }}
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  Deseja mesmo excluir a oficina "{{ oficina.nome }}"?
+                  Deseja mesmo excluir o mecânico "{{ mecanico.nome }}"?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                   <button type="button" class="btn btn-danger">
-                    <a class="text-decoration-none text-white" href="{% url 'geral:apagar_oficina' oficina.id %}">Excluir</a>
+                    <a class="text-decoration-none text-white" href="{% url 'geral:apagar_mecanico' mecanico.id %}">Excluir</a>
                   </button>
                 </div>
               </div>
@@ -62,7 +59,7 @@ Oficinas | {{ block.super }}
 
 
 
-<a class="btn btn-primary" href="{% url 'geral:nova_oficina' %}"><i class="fa-solid fa-plus"></i> Nova</a>
+<a class="btn btn-primary" href="{% url 'geral:novo_mecanico' %}"><i class="fa-solid fa-plus"></i> Nova</a>
 
 {% endblock main %}
 
