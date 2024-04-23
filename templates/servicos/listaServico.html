@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block titulo %}
+Oficinas | {{ block.super }}
+{% endblock titulo %}
+
+{% block main %}
+
+{% include 'utils/messages.html' %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Oficina do Serviço</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Comissão</th>
+            <th scope="col" colspan='2'>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for servico in servicos %}
+        <tr>
+            <th scope="row">{{ servico.id }}</th>
+            <td>{{ servico.oficina}}</td>
+            <td>{{ servico.nome }}</td>
+            <td>{{ servico.descricao }}</td>
+            <td>{{ servico.valor }}</td>
+            <td>{{ servico.comissao }}</td>
+            <td>
+                <a class="btn btn-outline-info btn-sm" href="{% url 'servicos:editarServico' servico.id %}"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+            </td>
+        
+
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+<a class="btn btn-primary" href="{% url 'servicos:novoServico' %}"><i class="fa-solid fa-plus"></i> Nova</a>
+
+{% endblock main %}
+
+

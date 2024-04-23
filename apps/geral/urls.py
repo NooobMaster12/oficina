@@ -1,17 +1,19 @@
 from django.urls import path
-from . import views
 
 app_name = 'geral'
 
+from . import views
+
 urlpatterns = [
-    path('mecanicos', views.lista_mecanico, name='lista_mecanicos'),
-    path('novo_mecanico/', views.novo_mecanico, name='novo_mecanico'),
-    path('excluir_mecanico/<int:pk>/', views.apagar_mecanico, name='apagar_mecanico'),
-    path('editar_mecanico/<int:pk>/', views.editar_mecanico, name='editar_mecanico'),
-    path('nova-oficina', views.nova_oficina, name='nova_oficina'),
-    path('oficinas/', views.lista_oficina, name='lista_oficina'),
-    path('excluir_oficina/<int:pk>/', views.apagar_oficina, name='apagar_oficina'),
-    path('editar_oficina/<int:pk>/', views.editar_oficina, name='editar_oficina'),
+
+    path('nova-oficina/', views.novaOficina, name='novaOficina'),
+    path('oficinas/', views.listaOficina, name='listaOficina'),
+    path('deletar-oficina/<int:pk>',views.deletarOficina, name='deletarOficina'),
+    path('editar-oficina/<int:pk>', views.editarOficina, name='editarOficina'),
+    path('novo-mecanico/', views.novoMecanico, name='novoMecanico'),
+    path('mecanicos/', views.listaMecanico, name='listaMecanico'),
+    path('deletar-mecanico/<int:pk>',views.deletarMecanico, name='deletarMecanico'),
+    path('editar-mecanico/<int:pk>', views.editarMecanico, name='editarMecanico'),
     path('', views.home, name='home'),
-    
+
 ]

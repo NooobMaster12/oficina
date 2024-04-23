@@ -1,13 +1,15 @@
 from django.urls import path
-from . import views
 
 app_name = 'servicos'
 
+from . import views
 
 urlpatterns = [
-    path('servicos/', views.lista_servicos, name='lista_servicos'),
-    path('novo-servicos', views.novo_servico, name='novo_servico'),    
-    path('excluir_servico/<int:pk>/', views.apagar_servicos, name='apagar_servico'),
-    path('editar_servico/<int:pk>/', views.editar_servico, name='editar_servico'),
 
+    path('novo-servico/', views.novoServico, name='novoServico'),
+    path('editar/<int:pk>/', views.editarServico, name='editarServico'),
+    path('ordens-servicos/', views.listaOrdemServico, name='listaOrdemServico'),
+    path('nova-ordem-servico', views.novaOrdemServico, name='novaOrdemServico'),
+    path('nova-ordem-servico/<int:pk>/', views.editarOrdemServico, name='editarOrdemServico'),
+    path('', views.listaServico, name='listaServico'),
 ]

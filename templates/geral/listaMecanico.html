@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %}
+
+{% block titulo %}
+Mecânico | {{ block.super }}
+{% endblock titulo %}
+
+{% block main %}
+
+{% include 'utils/messages.html' %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Oficina</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Código</th>
+            <th scope="col" colspan='2'>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mecanico in mecanicos %}
+        <tr>
+            <th scope="row">{{ mecanico.id }}</th>
+            <td>{{ mecanico.oficina }}</td>
+            <td>{{ mecanico.nome }}</td>
+            <td>{{ mecanico.codigo }}</td>
+            <td>
+                <a class="btn btn-outline-info btn-sm" href="{% url 'geral:editarMecanico' mecanico.id %}"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+                <a class="btn btn-outline-danger btn-sm" href="{% url 'geral:deletarMecanico' mecanico.id %}"><i class="fa-regular fa-trash-can"></i></a>
+            </td>
+        
+
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+<a class="btn btn-primary" href="{% url 'geral:novoMecanico' %}"><i class="fa-solid fa-plus"></i> Nova</a>
+
+{% endblock main %}
+
+

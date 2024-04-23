@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Serviços | {{ block.super }}
+{% endblock titulo %}
+
+{% block main %}
+
+<h1>Novo Serviço</h1>
+{% include 'utils/messages.html' %}
+<form method='post' >
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="{{ form.mecanico.id_for_label }}" class="form-label">{{form.mecanico.label}}</label>        
+        {% render_field form.mecanico class="form-control" placeholder='Digite o Mecanico da Ordem de Servico...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.cliente.id_for_label }}" class="form-label">{{form.cliente.label}}</label>        
+        {% render_field form.cliente class="form-control" placeholder='Digite o cliente da Ordem de Serviço...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.veiculo.id_for_label }}" class="form-label">{{form.veiculo.label}}</label>        
+        {% render_field form.veiculo class="form-control" placeholder='Digite o Veículo da Ordem de serviço...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.placa.id_for_label }}" class="form-label">{{form.placa.label}}</label>        
+        {% render_field form.placa class="form-control" placeholder='Digite a Placa da Ordem de serviço...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.previsao.id_for_label }}" class="form-label">{{form.previsao.label}}</label>        
+        {% render_field form.previsao class="form-control" placeholder='Digite a Previsão da Ordem de serviço...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.data_entrada.id_for_label }}" class="form-label">{{form.data_entrada.label}}</label>        
+        {% render_field form.data_entrada class="form-control" placeholder='Digite a Data de Entrada...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.codigo.id_for_label }}" class="form-label">{{form.codigo.label}}</label>        
+        {% render_field form.codigo class="form-control" placeholder='Digite a Código da Ordem de serviço...' %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.servico.id_for_label }}" class="form-label">{{form.servico.label}}</label>        
+        {% render_field form.servico class="form-control" placeholder='Digite a Serviço da Ordem de serviço...' %}
+    </div>
+    
+    <button type="submit" class="btn btn-primary"><i class="fa-regular fa-paper-plane"></i><span> </span>{% if form.instance.pk %} Salvar {% else %} Criar {% endif %}</button>
+    <a href="{% url 'servicos:listaOrdemServico' %}" class="btn btn-outline-secondary">Cancelar</a>
+    
+</form>
+
+
+
+{% endblock main %}

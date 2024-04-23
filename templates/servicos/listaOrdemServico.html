@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+
+{% block titulo %}
+Oficinas | {{ block.super }}
+{% endblock titulo %}
+
+{% block main %}
+
+{% include 'utils/messages.html' %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Oficina da Ordem de Serviço</th>
+            <th scope="col">Mecânico</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Veículo</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Previsão</th>
+            <th scope="col">Data de Entrada</th>
+            <th scope="col">Código</th>
+            <th scope="col">Serviço</th>
+            <th scope="col" colspan='2'>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ordensServico in ordensServicos %}
+        <tr>
+            <th scope="row">{{ ordensServico.id }}</th>
+            <td>{{ ordensServico.oficina}}</td>
+            <td>{{ ordensServico.mecanico }}</td>
+            <td>{{ ordensServico.cliente }}</td>
+            <td>{{ ordensServico.veiculo }}</td>
+            <td>{{ ordensServico.placa}}</td>
+            <td>{{ ordensServico.previsao}}</td>
+            <td>{{ ordensServico.data_entrada}}</td>
+            <td>{{ ordensServico.codigo}}</td>
+            <td>{{ ordensServico.servico.all|join:', ' }}</td>
+
+            <td>
+                <a class="btn btn-outline-info btn-sm" href="{% url 'servicos:editarOrdemServico' ordensServico.id %}"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+            </td>
+        
+
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+<a class="btn btn-primary" href="{% url 'servicos:novaOrdemServico' %}"><i class="fa-solid fa-plus"></i> Nova</a>
+
+{% endblock main %}
+
+
